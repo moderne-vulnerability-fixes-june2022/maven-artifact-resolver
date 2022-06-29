@@ -58,6 +58,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -341,9 +342,7 @@ public class DefaultProjectDependenciesResolverIT
     private static File newTempDir( String basename )
         throws IOException
     {
-        File dir = File.createTempFile( basename + ".", ".dir" );
-        dir.delete();
-        dir.mkdirs();
+        File dir = Files.createTempDirectory(basename + "." + ".dir").toFile();
         
         return dir;
     }
